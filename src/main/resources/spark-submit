@@ -1,0 +1,1 @@
+./spark-submit --class com.fjpiqueras.keepcoding.sparksql.SparkSQlEjerciciosV2X --master local[*] /home/fjpiqueras/Workspace/SparkScalaModule/target/SparkScalaModule-1.0-SNAPSHOT.jar
