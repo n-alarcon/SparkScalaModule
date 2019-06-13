@@ -77,9 +77,9 @@ object SparkSQlEjerciciosV2X {
     val Varios4 = sparkSession.sql("select peliculaId, pelicula from global_temp.PELICULAS ")
     Varios4.show(10)
 
-    // muestra todos los usuario con codigo postal 55113
+    // muestra 20 usuarios con codigo postal 55113
     val Varios5 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' ")
-    Varios5.show(10)
+    Varios5.show(20)
 
 
     sparkSession.close()
