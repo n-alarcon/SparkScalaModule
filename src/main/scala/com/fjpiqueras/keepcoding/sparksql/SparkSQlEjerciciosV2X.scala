@@ -73,6 +73,12 @@ object SparkSQlEjerciciosV2X {
     val Varios3 = sparkSession.sql("select count(*) from global_temp.PELICULAS")
     Varios3.show(10)
 
+    // muestra solo dos tablas de la  global_temp.PELICULAS
+    val Varios4 = sparkSession.sql("select peliculaId, pelicula from global_temp.PELICULAS ")
+    Varios4.show(10)
+
+
+
     sparkSession.close()
   }
 }
