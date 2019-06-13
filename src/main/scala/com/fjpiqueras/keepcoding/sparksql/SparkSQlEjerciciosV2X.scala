@@ -33,9 +33,10 @@ object SparkSQlEjerciciosV2X {
     //Ejercicio 3: Mapea el dataset movies.dat en su case class correspondiente
     val peliculas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/movies.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
-      Pelicula(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2))).toDF
+      Pelicula(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2).replace("]", "").toString))
 
     //Ejercicio 3: Muestra la información de ambos datasets
+
     usuarios.show
     notas.show
     peliculas.show
