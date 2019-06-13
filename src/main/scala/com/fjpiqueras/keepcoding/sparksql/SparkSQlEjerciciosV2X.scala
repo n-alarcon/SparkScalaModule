@@ -64,7 +64,10 @@ object SparkSQlEjerciciosV2X {
     // Muestra 10 registros de global_temp.PELICULAS
     val varios1 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ")
     varios1.show(10)
-    //
+
+    // Muestra 20  registros de global_temp.PELICULAS ordenados por Descendente por genero
+    val varios2 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ORDER BY genero DESC LIMIT 20")
+    varios2.show(20)
 
 
     sparkSession.close()
