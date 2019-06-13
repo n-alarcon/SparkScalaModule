@@ -61,6 +61,12 @@ object SparkSQlEjerciciosV2X {
 
     ejercicio7.show(10)
 
+    // Muestra 10 registros de global_temp.PELICULAS
+    val varios1 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ")
+    varios1.show(10)
+    //
+
+
     sparkSession.close()
   }
 }
