@@ -21,17 +21,17 @@ object SparkSQlEjerciciosV2X {
 
 
     //Ejercicio 1: Mapea el dataset users.dat en su case class correspondiente
-    val usuarios = sparkSession.read.text("file:////home/fjpiqueras/Workspace/SparkScalaModule/dataset/users.dat").map(row => row.toString().split("::"))
+    val usuarios = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/users.dat").map(row => row.toString().split("::"))
       .map(rowSplitted => User(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2).toInt, rowSplitted(3), rowSplitted(4).replace("]", "")))
 
 
     //Ejercicio 2: Mapea el dataset ratings.dat en su case class correspondiente
-    val notas = sparkSession.read.text("file:////home/fjpiqueras/Workspace/SparkScalaModule/dataset/ratings.dat")
+    val notas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/ratings.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
       Rating(rowSplitted(0).replace("[", "").toInt, rowSplitted(1).toInt, rowSplitted(2).toInt, rowSplitted(3).replace("]", "").toInt)).toDF
 
     //Ejercicio 3: Mapea el dataset movies.dat en su case class correspondiente
-    val peliculas = sparkSession.read.text("file:////home/fjpiqueras/Workspace/SparkScalaModule/dataset/movies.dat")
+    val peliculas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/movies.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
       Pelicula(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2))).toDF
 
