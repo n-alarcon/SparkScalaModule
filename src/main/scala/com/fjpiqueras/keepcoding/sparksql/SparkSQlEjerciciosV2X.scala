@@ -69,6 +69,9 @@ object SparkSQlEjerciciosV2X {
     val varios2 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ORDER BY genero DESC LIMIT 20")
     varios2.show(20)
 
+    // Cuenta todos llas lineas de la tabla  global_temp.PELICULAS
+    val Varios3 = sparkSession.sql("select count(*) from global_temp.PELICULAS")
+    Varios3.show(10)
 
     sparkSession.close()
   }
