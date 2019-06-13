@@ -28,7 +28,7 @@ object SparkSQlEjerciciosV2X {
     //Ejercicio 2: Mapea el dataset ratings.dat en su case class correspondiente
     val notas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/ratings.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
-      Rating(rowSplitted(0).replace("[", "").toInt, rowSplitted(1).toInt, rowSplitted(2).toInt, rowSplitted(3).replace("]", "").toInt)).toDF
+      Rating(rowSplitted(0).replace("[", "").toInt, rowSplitted(1).toInt, rowSplitted(2).toInt, rowSplitted(3).replace("]", "").toInt))
 
     //Ejercicio 3: Mapea el dataset movies.dat en su case class correspondiente
     val peliculas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/movies.dat")
