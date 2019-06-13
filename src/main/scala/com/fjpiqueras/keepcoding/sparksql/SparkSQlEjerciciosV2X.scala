@@ -81,6 +81,9 @@ object SparkSQlEjerciciosV2X {
     val Varios5 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' ")
     Varios5.show(20)
 
+    // muestra 20 usuarios con codigo postal 55113 pero esta vez mujeres
+    val Varios6 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ")
+    Varios6.show(20)
 
     sparkSession.close()
   }
