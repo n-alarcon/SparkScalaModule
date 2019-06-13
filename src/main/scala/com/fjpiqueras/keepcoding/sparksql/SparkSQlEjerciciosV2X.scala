@@ -89,6 +89,10 @@ object SparkSQlEjerciciosV2X {
     val Varios7 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ORDER BY usuarioId desc")
     Varios7.show(20)
 
+    // muestra 20 usuarios con codigo postal 55113 pero esta vez mujeres, ordenadas de forma descendente, que tengan mas de 36 años
+    val Varios8 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' AND edad > 36 ORDER BY usuarioId desc")
+    Varios8.show(20)
+
     sparkSession.close()
   }
 }
