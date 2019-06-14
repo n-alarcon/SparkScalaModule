@@ -97,7 +97,9 @@ object SparkSQlEjerciciosV2X {
     val Varios16 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' AND edad > 36 ORDER BY usuarioId desc")
     Varios16.show(20)
 
-
+    // muestra tablas usuarioId,Pelicula y notas
+    val Varios17 = sparkSession.sql("SELECT usuarioId, pelicula, nota FROM global_temp.PELICULAS JOIN global_temp.NOTAS ON (PELICULAS.peliculaId = NOTAS.peliculaId) ")
+    Varios17.show(20)
 
 
     sparkSession.close()
