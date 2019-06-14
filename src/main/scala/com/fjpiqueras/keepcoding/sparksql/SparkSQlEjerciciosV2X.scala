@@ -1,6 +1,8 @@
 package com.fjpiqueras.keepcoding.sparksql
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+
 
 object SparkSQlEjerciciosV2X {
 
@@ -108,6 +110,13 @@ object SparkSQlEjerciciosV2X {
         "GROUP BY usuarioId, pelicula ORDER BY nota desc")
     Varios18.show(20)
 
+
+    // muestra tablas usuarioId,Pelicula y notas por media ordenados por descendente por nota
+    val Varios19 = sparkSession.sql(
+      "SELECT usuarioId, pelicula, AVG(nota) nota " +
+        "FROM global_temp.PELICULAS JOIN global_temp.NOTAS ON (PELICULAS.peliculaId = NOTAS.peliculaId) " +
+        "GROUP BY usuarioId, pelicula ORDER BY nota desc ")
+    Varios19.show(20)
 
 
 
