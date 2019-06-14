@@ -7,9 +7,9 @@ import org.apache.spark.sql.functions._
 
 object Ejercicio4 {
 
-  case class products(Id: Int, tipo: String, precio: Double, stok: Int)
+  case class products(crienteId: Int, tipo: String, precio: Double, stok: Int)
 
-  case class transaction(fecha: String, hora: String, cliente: Int, producto: String, items: String, total: Double)
+  case class transaction(fecha: String, hora: String, cliente: Int, productoId: String, itemAmount: String, totalPrice: Double)
 
 
   def main(args: Array[String]): Unit = {
@@ -51,6 +51,18 @@ object Ejercicio4 {
 
     tabla1.createOrReplaceGlobalTempView("PRODUCTS")
     tabla2.createOrReplaceGlobalTempView("TRANSACTION")
+
+  //  val num1 = transaction
+  //      .groupBy("clienteId")
+  //      .agg(round(sum("totalPrice"),2).as("totalPrice"), sum("itemAmount").as("itemAmount"))
+  //      .jion(products.withColumnRenamed("id", "producto"))
+
+  //  val topStockedProducts = pr
+
+  //  val top = transaction
+  //      .join(topS)
+
+
 
 
 
