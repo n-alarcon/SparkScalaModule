@@ -21,17 +21,17 @@ object SparkSQlEjerciciosV2X {
 
 
     //Ejercicio 1: Mapea el dataset users.dat en su case class correspondiente
-    val usuarios = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/users.dat").map(row => row.toString().split("::"))
+    val usuarios = sparkSession.read.text("file:///home/indizen/SparkScalaModule-ala/dataset/users.dat").map(row => row.toString().split("::"))
       .map(rowSplitted => User(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2).toInt, rowSplitted(3), rowSplitted(4).replace("]", "")))
 
 
     //Ejercicio 2: Mapea el dataset ratings.dat en su case class correspondiente
-    val notas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/ratings.dat")
+    val notas = sparkSession.read.text("file:///home/indizen/SparkScalaModule-ala/dataset/ratings.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
       Rating(rowSplitted(0).replace("[", "").toInt, rowSplitted(1).toInt, rowSplitted(2).toInt, rowSplitted(3).replace("]", "").toInt))
 
     //Ejercicio 3: Mapea el dataset movies.dat en su case class correspondiente
-    val peliculas = sparkSession.read.text("file:///Users/piter/IdeaProjects/SparkScalaModule2/dataset/movies.dat")
+    val peliculas = sparkSession.read.text("file:///home/indizen/SparkScalaModule-ala/dataset/movies.dat")
       .map(row => row.toString().split("::")).map(rowSplitted =>
       Pelicula(rowSplitted(0).replace("[", "").toInt, rowSplitted(1), rowSplitted(2).replace("]", "").toString))
 
@@ -62,36 +62,43 @@ object SparkSQlEjerciciosV2X {
     ejercicio7.show(10)
 
     // Muestra 10 registros de global_temp.PELICULAS
-    val varios1 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ")
-    varios1.show(10)
+    val varios8 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ")
+    varios8.show(10)
 
     // Muestra 20  registros de global_temp.PELICULAS ordenados por Descendente por genero
-    val varios2 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ORDER BY genero DESC LIMIT 20")
-    varios2.show(20)
+    val varios9 = sparkSession.sql("SELECT * FROM global_temp.PELICULAS ORDER BY genero DESC LIMIT 20")
+    varios9.show(20)
 
     // Cuenta todos llas lineas de la tabla  global_temp.PELICULAS
-    val Varios3 = sparkSession.sql("select count(*) from global_temp.PELICULAS")
-    Varios3.show(10)
+    val Varios10 = sparkSession.sql("select count(*) from global_temp.PELICULAS")
+    Varios10.show(10)
 
     // muestra solo dos tablas de la  global_temp.PELICULAS
-    val Varios4 = sparkSession.sql("select peliculaId, pelicula from global_temp.PELICULAS ")
-    Varios4.show(10)
+    val Varios11 = sparkSession.sql("select peliculaId, pelicula from global_temp.PELICULAS ")
+    Varios11.show(10)
 
     // muestra 20 usuarios con codigo postal 55113
-    val Varios5 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' ")
-    Varios5.show(20)
+    val Varios12 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' ")
+    Varios12.show(20)
 
     // muestra 20 usuarios con codigo postal 55113 pero esta vez mujeres
-    val Varios6 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ")
-    Varios6.show(20)
+    val Varios13 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ")
+    Varios13.show(20)
 
     // muestra 20 usuarios con codigo postal 55113 pero esta vez mujeres, ordenadas de forma descendente
-    val Varios7 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ORDER BY usuarioId desc")
-    Varios7.show(20)
+    val Varios14 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' ORDER BY usuarioId desc")
+    Varios14.show(20)
 
     // muestra 20 usuarios con codigo postal 55113 pero esta vez mujeres, ordenadas de forma descendente, que tengan mas de 36 años
-    val Varios8 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' AND edad > 36 ORDER BY usuarioId desc")
-    Varios8.show(20)
+    val Varios15 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' AND edad > 36 ORDER BY usuarioId desc")
+    Varios15.show(20)
+
+    //
+    val Varios16 = sparkSession.sql("SELECT usuarioId, genero, edad, ocupacion, codigopostal  from global_temp.USUARIOS WHERE codigopostal='55113' AND genero='F' AND edad > 36 ORDER BY usuarioId desc")
+    Varios16.show(20)
+
+
+
 
     sparkSession.close()
   }
