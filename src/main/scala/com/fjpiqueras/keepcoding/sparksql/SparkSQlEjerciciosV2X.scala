@@ -101,6 +101,15 @@ object SparkSQlEjerciciosV2X {
     val Varios17 = sparkSession.sql("SELECT usuarioId, pelicula, nota FROM global_temp.PELICULAS JOIN global_temp.NOTAS ON (PELICULAS.peliculaId = NOTAS.peliculaId) ")
     Varios17.show(20)
 
+    // muestra tablas usuarioId,Pelicula y notas por media ordenados por descendente por nota
+    val Varios18 = sparkSession.sql(
+      "SELECT usuarioId, pelicula, AVG(nota) nota " +
+        "FROM global_temp.PELICULAS JOIN global_temp.NOTAS ON (PELICULAS.peliculaId = NOTAS.peliculaId) " +
+        "GROUP BY usuarioId, pelicula ORDER BY nota desc")
+    Varios18.show(20)
+
+
+
 
     sparkSession.close()
   }
